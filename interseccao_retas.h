@@ -2,6 +2,7 @@
 #define INTERSECCAO_RETAS_H
 
 #include "ponto.h"
+#include "poligono.h"
 
 
 int intersec2d(Ponto k, Ponto l, Ponto m, Ponto n, double &s, double &t)
@@ -18,5 +19,6 @@ int intersec2d(Ponto k, Ponto l, Ponto m, Ponto n, double &s, double &t)
 
  return 1; // há intersecção
 }
+
 
 #endif // INTERSECCAO_RETAS_H

@@ -12,6 +12,9 @@ public:
     Ponto p2;
     Ponto o;
 
+    double angle(Ponto p);
+
+    Ponto pontoMedio();
 
 };
 
