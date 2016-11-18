@@ -16,6 +16,7 @@ double Poligono::angle(Ponto p)
     uy = p.y-m.y;
 
     double angle = acos( (vx*ux + vy*uy)/(sqrt(ux*ux+uy*uy)* sqrt(vx*vx+vy*vy)) );
+    return angle;
 }
 
 Ponto Poligono::pontoMedio()

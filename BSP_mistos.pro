@@ -11,7 +11,8 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     poligono.cpp \
-    nodo.cpp
+    nodo.cpp \
+    interseccao_retas.cpp
 SOURCES +=
 SOURCES +=
 SOURCES +=

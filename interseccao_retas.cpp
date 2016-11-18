@@ -1,6 +1,17 @@
 #include "interseccao_retas.h"
 
-point line_intersect(point p, point q, point r, point s) {
-   point a = q - p, b = s - r, c = point(p % q, r % s);
-   return point(point(a.x, b.x) % c, point(a.y, b.y) % c) / (a % b);
+
+int intersec2d(Ponto k, Ponto l, Ponto m, Ponto n, double &s, double &t)
+{
+    double det;
+
+    det = (n.x - m.x) * (l.y - k.y)  -  (n.y - m.y) * (l.x - k.x);
+
+    if (det == 0.0)
+        return 0 ; // não há intersecção
+
+    s = ((n.x - m.x) * (m.y - k.y) - (n.y - m.y) * (m.x - k.x))/ det ;
+    t = ((l.x - k.x) * (m.y - k.y) - (l.y - k.y) * (m.x - k.x))/ det ;
+
+    return 1; // há intersecção
 }
