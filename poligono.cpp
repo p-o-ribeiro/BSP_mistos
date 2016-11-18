@@ -1,5 +1,5 @@
 #include "poligono.h"
-#include <math.h
+#include "math.h"
 
 Poligono::Poligono()
 {

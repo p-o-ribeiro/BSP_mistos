@@ -2,7 +2,7 @@
 #define NODO H
 
 #include <vector>
-#include "Poligono"
+#include "poligono.h"
 
 using namespace std;
 
@@ -11,8 +11,8 @@ class Nodo
 public:
     Nodo(vector<Poligono> poligonos);
     Poligono nodo;
-    Nodo frente;
-    Nodo tras;
+    Nodo* frente;
+    Nodo* tras;
 
     void divide(Poligono outro, Poligono &frente, Poligono &tras);
 
