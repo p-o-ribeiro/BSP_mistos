@@ -12,6 +12,15 @@ Nodo::Nodo(vector<Poligono> poligonos){
 
 }
 
+/**
+ * @brief Nodo::divide
+ * @param outro
+ * @param frente
+ * @param tras
+ *
+ *  Funcao responsavel por comparar o nodo a um poligono fora da arvore BSP.
+ *  Divide o poligono externo em dois caso haja intersecao
+ */
 
 void Nodo::divide(Poligono outro, Poligono &frente, Poligono &tras){
     double s,t;
