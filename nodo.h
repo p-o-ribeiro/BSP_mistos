@@ -1,11 +1,21 @@
-#ifndef BSP_H
-#define BSP_H
+#ifndef NODO_H
+#define NODO H
 
+#include <vector>
+#include "Poligono"
 
-class BSP
+using namespace std;
+
+class Nodo
 {
 public:
-    BSP();
+    Nodo(vector<Poligono> poligonos);
+    Poligono nodo;
+    Nodo frente;
+    Nodo tras;
+
+    void divide(Poligono outro, Poligono &frente, Poligono &tras);
+
 };
 
-#endif // BSP_H
+#endif // NODO

@@ -9,4 +9,15 @@ CONFIG -= app_bundle
 
 TEMPLATE = app
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    poligono.cpp \
+    nodo.cpp
+SOURCES +=
+SOURCES +=
+SOURCES +=
+
+HEADERS += \
+    interseccao_retas.h \
+    ponto.h \
+    poligono.h \
+    nodo.h
