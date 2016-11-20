@@ -15,11 +15,11 @@ void display(void){
 
     glPushMatrix();
     glColor3f(1.0f, 1.0f, 1.0f);
-    glTranslatef(-posicao.x,-posicao.y,0.f);
-    glTranslatef(posicao.x,posicao.y,0.f);
+    glTranslatef(-posicao.x,-posicao.y,0.5f);
+    glTranslatef(posicao.x,posicao.y,0.5f);
     glRotatef(90,1.f,0.f,0.f);
     glRotatef(ang,0.f,0.f,1.f);
-    glTranslatef(-posicao.x,-posicao.y,0.f);
+    glTranslatef(-posicao.x,-posicao.y,0.5f);
 
     mapa.desenhaLabirinto();
     glPopMatrix();
@@ -34,7 +34,7 @@ void reshape (int w, int h){
     glViewport (0, 0, (GLsizei) w, (GLsizei) h);
     glMatrixMode (GL_PROJECTION);
     glLoadIdentity ();
-    gluPerspective(65.0, (GLfloat) w/(GLfloat) h, 1.0, 20.0);
+    gluPerspective(65.0, (GLfloat) w/(GLfloat) h, 0.0, 20.0);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     //glTranslatef(-mapa.getLargura()/2.f,-mapa.getAltura()/2.f,-0.5f);

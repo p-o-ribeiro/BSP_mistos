@@ -24,3 +24,11 @@ Ponto Poligono::pontoMedio()
     Ponto medio( (p1.x-p2.x )/2, (p1.y-p2.y )/2);
     return medio;
 }
+
+
+Cor::Cor()
+{
+    r=(rand()%100)/100.f;
+    g=(rand()%100)/100.f;
+    b=(rand()%100)/100.f;
+}

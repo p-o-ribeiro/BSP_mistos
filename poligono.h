@@ -2,6 +2,13 @@
 #define POLIGONO_H
 
 #include "ponto.h"
+class Cor{
+public:
+    Cor();
+    float r;
+    float g;
+    float b;
+};
 
 class Poligono
 {
@@ -11,6 +18,7 @@ public:
     Ponto p1;
     Ponto p2;
     Ponto o;
+    Cor cor;
     const float altura=1;
     double angle(Ponto p);
 
