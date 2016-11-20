@@ -12,6 +12,12 @@ class labirinto
 public:
     labirinto(const char[]);
     void desenhaLabirinto();
+    int getAltura() const;
+    void setAltura(int value);
+
+    int getLargura() const;
+    void setLargura(int value);
+
 private:
     vector<Poligono> paredes;
     int altura,largura;

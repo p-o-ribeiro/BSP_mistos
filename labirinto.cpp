@@ -31,7 +31,7 @@ void labirinto::desenhaLabirinto(){
     glVertex3f(largura, altura ,0.f);
     glVertex3f(largura  , 0.f ,0.f);
     glEnd();
-    for (int i=0;i<paredes.size();i++){
+    for (uint i=0;i<paredes.size();i++){
         glBegin(GL_LINE_LOOP);
         glVertex3f(paredes[i].p1.x  , paredes[i].p1.y , 0.f );
         glVertex3f(paredes[i].p1.x, paredes[i].p1.y , paredes[i].altura );
@@ -42,3 +42,23 @@ void labirinto::desenhaLabirinto(){
     glPopMatrix();
 
 }
+int labirinto::getAltura() const
+{
+    return altura;
+}
+
+void labirinto::setAltura(int value)
+{
+    altura = value;
+}
+int labirinto::getLargura() const
+{
+    return largura;
+}
+
+void labirinto::setLargura(int value)
+{
+    largura = value;
+}
+
+
