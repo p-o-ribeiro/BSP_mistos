@@ -4,6 +4,7 @@ labirinto::labirinto(const char nomeArquivo[])
 {
     this->nomeArquivo=nomeArquivo;
     leLabirinto();
+    Arvore= new Nodo(paredes);
 }
 void labirinto::leLabirinto()
 {
@@ -59,6 +60,11 @@ void labirinto::desenhaLabirinto(){
         glEnd();
     }
     glPopMatrix();
+
+}
+
+void labirinto::desenhaLabirintoBSP()
+{
 
 }
 int labirinto::getAltura() const

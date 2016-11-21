@@ -10,13 +10,14 @@ using namespace std;
 
 class Nodo
 {
-public:
-    Nodo(vector<Poligono> poligonos);
-    Poligono poligono;
+private:
+    vector<Poligono> poligonos;
     Nodo* frente;
     Nodo* tras;
 
-private:
+public:
+    Nodo();
+    Nodo(vector<Poligono> &poligonos);
     void divide(Poligono outro, Poligono &frente, Poligono &tras);
 
 };

@@ -6,6 +6,14 @@ Poligono::Poligono()
 
 }
 
+double Poligono::produtoVetorial(Ponto p)
+{
+    Ponto vetor=p2-p1;
+    p=p-p1;
+    return vetor%p;
+}
+
+
 double Poligono::angle(Ponto p)
 {
     Ponto m = pontoMedio();

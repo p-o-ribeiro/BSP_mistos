@@ -7,12 +7,14 @@
 #include <fstream>
 #include <iostream>
 #include <cstdlib>
+#include <nodo.h>
 using namespace std;
 class labirinto
 {
 public:
     labirinto(const char[]);
     void desenhaLabirinto();
+    void desenhaLabirintoBSP();
     int getAltura() const;
     void setAltura(int value);
 
@@ -21,6 +23,7 @@ public:
 
 private:
     vector<Poligono> paredes;
+    Nodo *Arvore;
     int altura,largura;
     string nomeArquivo;
     void leLabirinto();
