@@ -3,25 +3,29 @@
 
 #define PI 3.14159265
 #include<iostream>
+#include <math.h>
+#include <vetor.h>
+
 using namespace std;
 
 struct Ponto {
-    double x, y;
+    double x, y, z;
     Ponto(double x = 0, double y = 0): x(x), y(y) {}
 
 
-    Ponto operator +(Ponto q) { return Ponto(x + q.x, y + q.y); }
-    Ponto operator -(Ponto q) { return Ponto(x - q.x, y - q.y); }
-    Ponto operator *(double t) { return Ponto(x * t, y * t); }
-    Ponto operator /(double t) { return Ponto(x / t, y / t); }
-    double operator *(Ponto q) { return x * q.x + y * q.y; }
-    double operator %(Ponto q) { return x * q.y - y * q.x; }
+    Vetor operator +(Ponto q) { return Vetor(x + q.x, y + q.y); }
+    Vetor operator -(Ponto q) { return Vetor(x - q.x, y - q.y); }
+    Vetor operator *(double t) { return Vetor(x * t, y * t); }
+    Vetor operator /(double t) { return Vetor(x / t, y / t); }
+//    double operator *(Ponto q) { return x * q.x + y * q.y; }
+    double operator !() { return sqrt(x * x + y*y); }
 
 
     friend ostream& operator <<(ostream& o, Ponto p) {
       return o << "(" << p.x << ", " << p.y << ")";
     }
  };
+
 
 
 

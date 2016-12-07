@@ -1,4 +1,5 @@
 QT += core
+QT += opengl
 QT -= gui
 
 CONFIG += c++11
@@ -27,4 +28,5 @@ HEADERS += \
     ponto.h \
     poligono.h \
     nodo.h \
-    labirinto.h
+    labirinto.h \
+    vetor.h

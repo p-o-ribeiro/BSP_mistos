@@ -9,10 +9,10 @@
 #include <cstdlib>
 #include <nodo.h>
 using namespace std;
-class labirinto
+class Labirinto
 {
 public:
-    labirinto(const char[]);
+    Labirinto(const char[]);
     void desenhaLabirinto();
     void desenhaLabirintoBSP();
     int getAltura() const;
@@ -20,14 +20,21 @@ public:
 
     int getLargura() const;
     void setLargura(int value);
+    void setPosicao(Ponto* pos);
+
+
+
+    float *getAngulo() const;
+    void setAngulo(float *value);
 
 private:
     vector<Poligono> paredes;
-    Nodo *Arvore;
+    Nodo* arvore;
     int altura,largura;
     string nomeArquivo;
     void leLabirinto();
-
+    Ponto* posicao;
+    float* angulo;
 
 };
 
