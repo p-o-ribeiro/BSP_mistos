@@ -15,8 +15,8 @@ struct Vetor {
     Vetor operator -(Vetor q) { return Vetor(x - q.x, y - q.y, z- q.z); }
     Vetor operator *(double t) { return Vetor(x * t, y * t, z * t); }
     Vetor operator /(double t) { return Vetor(x / t, y / t, z / t); }
-    double operator *(Vetor q) { return x * q.x + y * q.y + z*q.z; }
-    Vetor operator %(Vetor q) { return Vetor(y*q.z-z*q.y, z*q.x-x*q.z, x*q.y - y*q.x); }
+    double operator *(Vetor q) { return x * q.x + y * q.y + z*q.z; } // Produto escalar
+    Vetor operator %(Vetor q) { return Vetor(y*q.z-z*q.y, z*q.x-x*q.z, x*q.y - y*q.x); } //Produto vetorial
 
 
     friend ostream& operator <<(ostream& o, Vetor v) {

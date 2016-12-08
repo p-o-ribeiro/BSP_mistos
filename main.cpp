@@ -8,10 +8,14 @@
 #include <labirinto.h>
 #include <algorithm>
 
-
+//Variaveis globais de observador
 float ang=0;
 bool cima,baixo,esquerda,direita;
+
+
 Labirinto mapa("labirinto.txt");
+
+//Posicao do observador:
 Ponto* posicao = new Ponto(mapa.getLargura()/2.f,mapa.getAltura()/2.f);
 
 void light(void)
@@ -44,7 +48,6 @@ void light(void)
 
 void display(void){
     glClear (GL_COLOR_BUFFER_BIT);
-
     glPushMatrix();
     glColor3f(1.0f, 1.0f, 1.0f);
     glTranslatef(-posicao->x,-posicao->y,0.5f);
@@ -71,10 +74,9 @@ void reshape (int w, int h){
     gluPerspective(65.0, (GLfloat) w/(GLfloat) h, 0.0, 20.0);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    //glTranslatef(-mapa.getLargura()/2.f,-mapa.getAltura()/2.f,-0.5f);
-
 }
 
+//Tratamento para funcoes de teclado
 void keyboard(unsigned char key, int x, int y){
     switch (key) {
     case 's':
@@ -95,7 +97,13 @@ void keyboard(unsigned char key, int x, int y){
     }
 }
 
-
+/**
+ * @brief atualizaPersonagem
+ * @param v
+ *
+ * Funcao responsavel por movimentar o personagem
+ * conforme o acionamento das teclas.
+ */
 void atualizaPersonagem(int v)
 {
     if(cima){
@@ -108,19 +116,16 @@ void atualizaPersonagem(int v)
         posicao->x+=0.03*sin(ang*PI/180);
     }
     else if(esquerda){
-        ang+=3;
+        ang+=3; //Rotaciona em 3 graus
     }
     else if(direita){
-        ang-=3;
+        ang-=3; //Rotaciona em 3 graus
     }
     mapa.setAngulo(ang);
     cima=baixo=direita=esquerda=false;
     glutPostRedisplay();
     glutTimerFunc(100/6, atualizaPersonagem, 0);
 }
-
-int test();
-
 
 
 int main(int argc, char *argv[])
@@ -130,7 +135,7 @@ int main(int argc, char *argv[])
     glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize (700, 700);
     glutInitWindowPosition (500, 500);
-    glutCreateWindow ("Main window");
+    glutCreateWindow ("Labirinto com BSP");
     init();
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
@@ -138,34 +143,4 @@ int main(int argc, char *argv[])
     glutTimerFunc(100/6, atualizaPersonagem,0);
     glutMainLoop();
     return 0;
-    //return a.exec();
 }
-
-
-//int test(){
-
-//    Ponto p1 (5,0);
-//    Ponto p2 (5,2);
-
-//    vector<Poligono* > pols;
-//    for(int i=4; i>= 1; i--){
-//        Ponto p3 (0,i*5);
-//        Ponto p4 (10,i*5);
-//        Poligono* pol = new Poligono();
-//        pol->p1 = p3;
-//        pol->p2 = p4;
-//        pols.push_back(pol);
-
-//    }
-////    random_shuffle(pols.begin(), pols.end());
-//    for(int i=0; i < pols.size(); i++)
-//        cout << *pols[i] << endl;
-
-//    Nodo* av2 =  new Nodo(pols);
-//    Vetor normal = p2-p1;
-//    Vetor normal2 = av2->poligono->pontoNormal()- av2->poligono->pontoMedio();
-//    bool positivo = (normal * normal2) >= 0;
-//    Nodo::bfs(av2);
-//    av2->pintor(av2, positivo);
-//    return 0;
-//}

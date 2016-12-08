@@ -17,8 +17,8 @@ struct Ponto {
     Vetor operator -(Ponto q) { return Vetor(x - q.x, y - q.y); }
     Vetor operator *(double t) { return Vetor(x * t, y * t); }
     Vetor operator /(double t) { return Vetor(x / t, y / t); }
-//    double operator *(Ponto q) { return x * q.x + y * q.y; }
-    double operator !() { return sqrt(x * x + y*y); }
+
+    double operator !() { return sqrt(x * x + y*y); } // Distancia da origem (modulo)
 
 
     friend ostream& operator <<(ostream& o, Ponto p) {

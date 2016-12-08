@@ -1,6 +1,14 @@
 #include "interseccao_retas.h"
 
-
+/**
+ * @brief intersec2d
+ * @return status de possui ou nao possui intersecao
+ *
+ * retirada de
+ * Funcao para calculo de intersecao de pontos em 2D
+ *
+ * retirado de http://www.inf.pucrs.br/~pinho/CG/Aulas/OpenGL/Interseccao/CalcIntersec.html
+ */
 int intersec2d(Ponto k, Ponto l, Ponto m, Ponto n, double &s, double &t)
 {
     double det;

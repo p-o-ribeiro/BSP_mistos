@@ -11,7 +11,6 @@ Labirinto::Labirinto(const char nomeArquivo[])
         arvore->adiciona(paredes.back());
         paredes.pop_back();
     }
-    cout << "adiciona OK" << endl;
 }
 void Labirinto::leLabirinto()
 {
@@ -21,9 +20,11 @@ void Labirinto::leLabirinto()
         cout<<"Arquivo "<<nomeArquivo<<" não foi aberto"<<endl;
         return;
     }
+    //Quantidade de paredes do arquivo
     int numeroParedes;
     arquivo>>altura>>largura>>numeroParedes;
     paredes.resize(numeroParedes);
+    //Leitura de cada parede
     for (int i=0;i<numeroParedes;i++){
         arquivo>>paredes[i].p1.y>>paredes[i].p1.x;
         arquivo>>paredes[i].p2.y>>paredes[i].p2.x;
@@ -46,6 +47,8 @@ void Labirinto::setPosicao(Ponto* pos){
     this->posicao = pos;
 }
 
+
+//Funcao inicial de desenho antes do uso de BSP
 void Labirinto::desenhaLabirinto(){
     //glPushMatrix();
     glColor3f(0.5f,1.0f,1.0f);
@@ -87,8 +90,17 @@ void Labirinto::desenhaLabirinto(){
 
 }
 
+
+/**
+ * @brief Labirinto::desenhaLabirintoBSP
+ *
+ * Rotina grafica principal do projeto, responsavel por definicoes de
+ * iluminacao e chamada do algoritmo do pintor para as paredes
+ */
 void Labirinto::desenhaLabirintoBSP()
 {
+
+    //Definicoes de material para o piso
     GLfloat material_Ka[] = {0.0f, 0.0f, 0.0f, 1.0f};
     GLfloat material_Kd[] = {0.4f, 0.4f, 0.5f, 1.0f};
     GLfloat material_Ks[] = {0.8f, 0.8f, 0.0f, 1.0f};
@@ -113,27 +125,12 @@ void Labirinto::desenhaLabirintoBSP()
         }
     }
 
-//    glBegin(GL_POLYGON);
-//    glVertex3f(0.f  , 0.f , 0.f );
-//    glVertex3f(0.f, altura , 0.f );
-//    glVertex3f(largura, altura ,0.f);
-//    glVertex3f(largura  , 0.f ,0.f);
-//    glEnd();
-
-//    Ponto pos_teste(20,20);
-//    cout << "Copiado" << (*posicao) << endl;
-//    double distMin = !(paredes[0].pontoMedio()-(*posicao));
-//    Nodo* proximo = arvore->maisProximo((*posicao), distMin);
-    //cout << proximo->poligono.p1 << " - " << proximo->poligono.p2 << endl;
 
     double x =  posicao->x-1*sin((angulo)*PI/180);
     double y =  posicao->y-1*cos((angulo)*PI/180);
-    Ponto pos2 = Ponto(x,y);
-
-    //Vetor normal = pos2 - (*posicao);
+    Ponto pos2 = Ponto(x,y); // Ponto deslocado conforme angulo de visao
+    //Algoritmo do pintor:
     Nodo::pintor(arvore, pos2);
-
-
 
 }
 int Labirinto::getAltura() const
