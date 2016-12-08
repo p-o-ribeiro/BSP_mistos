@@ -89,20 +89,36 @@ void Labirinto::desenhaLabirinto(){
 
 void Labirinto::desenhaLabirintoBSP()
 {
+    GLfloat material_Ka[] = {0.0f, 0.0f, 0.0f, 1.0f};
+    GLfloat material_Kd[] = {0.4f, 0.4f, 0.5f, 1.0f};
+    GLfloat material_Ks[] = {0.8f, 0.8f, 0.0f, 1.0f};
+    GLfloat material_Ke[] = {0.1f, 0.0f, 0.0f, 0.0f};
+    GLfloat material_Se = 20.0f;
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, material_Ka);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, material_Kd);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, material_Ks);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, material_Ke);
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, material_Se);
     glColor3f(0.5f,1.0f,1.0f);
-    glBegin(GL_POLYGON);
-    glVertex3f(0.f  , 0.f , 0.f );
-    glVertex3f(0.f, altura , 0.f );
-    glVertex3f(largura, altura ,0.f);
-    glVertex3f(largura  , 0.f ,0.f);
-    glEnd();
-    glColor3f(0.0f,0.0f,0.0f);
-    glBegin(GL_LINE_LOOP);
-    glVertex3f(0.f  , 0.f , 0.f );
-    glVertex3f(0.f, altura , 0.f );
-    glVertex3f(largura, altura ,0.f);
-    glVertex3f(largura  , 0.f ,0.f);
-    glEnd();
+    double dx=largura/10.0;
+    double dy=altura/10.0;
+    for(int i=0;i<10;i++){
+        for(int j=0;j<10;j++){
+            glBegin(GL_POLYGON);
+            glVertex3f(dx*i, dy*j ,0);
+            glVertex3f(dx*(i+1), dy*j ,0 );
+            glVertex3f(dx*(i+1), dy*(j+1) ,0);
+            glVertex3f(dx*i, dy*(j+1) ,0);
+            glEnd();
+        }
+    }
+
+//    glBegin(GL_POLYGON);
+//    glVertex3f(0.f  , 0.f , 0.f );
+//    glVertex3f(0.f, altura , 0.f );
+//    glVertex3f(largura, altura ,0.f);
+//    glVertex3f(largura  , 0.f ,0.f);
+//    glEnd();
 
 //    Ponto pos_teste(20,20);
 //    cout << "Copiado" << (*posicao) << endl;

@@ -3,6 +3,7 @@
 #include "ponto.h"
 #include <cmath>
 #include <GL/glut.h>
+//#include <GL/glew.h>
 #include <stdio.h>
 #include <labirinto.h>
 #include <algorithm>
@@ -13,7 +14,32 @@ bool cima,baixo,esquerda,direita;
 Labirinto mapa("labirinto.txt");
 Ponto* posicao = new Ponto(mapa.getLargura()/2.f,mapa.getAltura()/2.f);
 
+void light(void)
+{
+  glEnable(GL_LIGHTING);
+  glEnable(GL_LIGHT0);
+  glEnable(GL_NORMALIZE);
 
+  GLfloat lmKa[] = {0.0, 1.0, 0.0, 0.0 };
+  glLightModelfv(GL_LIGHT_MODEL_AMBIENT, lmKa);
+
+  glLightModelf(GL_LIGHT_MODEL_LOCAL_VIEWER, 1.0);
+  glLightModelf(GL_LIGHT_MODEL_TWO_SIDE, 0.0);
+
+
+
+  GLfloat light_pos[] = {-1.0f, -2.0f, -3.0f, 1.0f};
+  GLfloat light_Ka[]  = {1.0f, 1.0f, 1.0f, 1.0f};
+  GLfloat light_Kd[]  = {1.0f, 1.0f, 1.0f, 1.0f};
+  GLfloat light_Ks[]  = {1.0f, 1.0f, 1.0f, 1.0f};
+
+  glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
+  glLightfv(GL_LIGHT0, GL_AMBIENT, light_Ka);
+  glLightfv(GL_LIGHT0, GL_DIFFUSE, light_Kd);
+  glLightfv(GL_LIGHT0, GL_SPECULAR, light_Ks);
+
+
+}
 
 
 void display(void){
@@ -23,14 +49,16 @@ void display(void){
     glColor3f(1.0f, 1.0f, 1.0f);
     glTranslatef(-posicao->x,-posicao->y,0.5f);
     glTranslatef(posicao->x,posicao->y,0.5f);
-    glRotatef(90,1.f,0.f                              ,0.f);
+    light();
+    glRotatef(90,1.f,0.f,0.f);
     glRotatef(ang,0.f,0.f,1.f);
     glTranslatef(-posicao->x,-posicao->y,0.5f);
-
     mapa.desenhaLabirintoBSP();
     glPopMatrix();
     glutSwapBuffers();
 }
+
+
 
 void init(void){
     glClearColor (0.0, 0.0, 0.0, 0.0);
@@ -71,13 +99,13 @@ void keyboard(unsigned char key, int x, int y){
 void atualizaPersonagem(int v)
 {
     if(cima){
-        posicao->y-=0.3*cos(ang*PI/180);
-        posicao->x-=0.3*sin(ang*PI/180);
+        posicao->y-=0.03*cos(ang*PI/180);
+        posicao->x-=0.03*sin(ang*PI/180);
 
     }
     else if(baixo){
-        posicao->y+=0.3*cos(ang*PI/180);
-        posicao->x+=0.3*sin(ang*PI/180);
+        posicao->y+=0.03*cos(ang*PI/180);
+        posicao->x+=0.03*sin(ang*PI/180);
     }
     else if(esquerda){
         ang+=3;
@@ -92,6 +120,8 @@ void atualizaPersonagem(int v)
 }
 
 int test();
+
+
 
 int main(int argc, char *argv[])
 {

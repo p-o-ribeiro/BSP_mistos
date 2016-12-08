@@ -1,5 +1,6 @@
 #ifndef LABIRINTO_H
 #define LABIRINTO_H
+//#include <GL/glew.h>
 #include <GL/glut.h>
 #include <poligono.h>
 #include <vector>

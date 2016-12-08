@@ -3,13 +3,23 @@
 #define NORMAL_OFFSET  1.0
 
 #include "ponto.h"
+#include <GL/glut.h>
+#include <vector>
+using namespace std;
 class Cor{
 public:
     Cor();
     float r;
     float g;
     float b;
+    GLfloat material_ka[4];
+    GLfloat material_kd[4];
+    GLfloat material_ks[4];
+    GLfloat material_ke[4];
 
+    GLfloat material_Se = 20.0f;
+
+    Cor& operator=(const Cor& other);
 
     friend ostream& operator <<(ostream& o, Cor p) {
       return o << "(red: " << p.r << ", green: " << p.g << ", blue: " << p.b << ")";
