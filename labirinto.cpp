@@ -31,12 +31,12 @@ void Labirinto::leLabirinto()
 
 }
 
-float *Labirinto::getAngulo() const
+float Labirinto::getAngulo() const
 {
     return angulo;
 }
 
-void Labirinto::setAngulo(float *value)
+void Labirinto::setAngulo(float value)
 {
     angulo = value;
 }
@@ -110,12 +110,12 @@ void Labirinto::desenhaLabirintoBSP()
 //    Nodo* proximo = arvore->maisProximo((*posicao), distMin);
     //cout << proximo->poligono.p1 << " - " << proximo->poligono.p2 << endl;
 
-    double x =  posicao->x+5*cos((*angulo)*PI/180);
-    double y =  posicao->y+5*cos((*angulo)*PI/180);
+    double x =  posicao->x-1*sin((angulo)*PI/180);
+    double y =  posicao->y-1*cos((angulo)*PI/180);
     Ponto pos2 = Ponto(x,y);
 
-    Vetor normal = pos2 - (*posicao);
-    Nodo::pintor(arvore, *posicao);
+    //Vetor normal = pos2 - (*posicao);
+    Nodo::pintor(arvore, pos2);
 
 
 

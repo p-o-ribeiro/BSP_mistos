@@ -85,6 +85,7 @@ void atualizaPersonagem(int v)
     else if(direita){
         ang-=3;
     }
+    mapa.setAngulo(ang);
     cima=baixo=direita=esquerda=false;
     glutPostRedisplay();
     glutTimerFunc(100/6, atualizaPersonagem, 0);
@@ -95,7 +96,6 @@ int test();
 int main(int argc, char *argv[])
 {
     mapa.setPosicao(posicao);
-    mapa.setAngulo(&ang);
     glutInit (&argc, argv);
     glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize (700, 700);

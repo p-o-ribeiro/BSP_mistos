@@ -24,8 +24,8 @@ public:
 
 
 
-    float *getAngulo() const;
-    void setAngulo(float *value);
+    float getAngulo() const;
+    void setAngulo(float value);
 
 private:
     vector<Poligono> paredes;
@@ -34,7 +34,7 @@ private:
     string nomeArquivo;
     void leLabirinto();
     Ponto* posicao;
-    float* angulo;
+    float angulo;
 
 };
 
